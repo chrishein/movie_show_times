@@ -1,6 +1,7 @@
 # MovieShowTimes
 
-TODO: Write a gem description
+Get Movies Show Times for all theaters near a given location.
+The gem crawls and parses Google Movies pages.
 
 ## Installation
 
