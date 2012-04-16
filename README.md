@@ -19,7 +19,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    movieShowTimes = MovieShowTimes::Crawler.new({ :location => 'Buenos Aires' })
+
+    theater = movieShowTimes.theaters['Monumental']
+    puts theater # => { :name => 'Monumental', :info => 'Lavalle 780, Buenos Aires, Argentina - 0-11-4393-9008',
+                        :movies => [ ... ]
+                      }
+
+    puts theater[:movies][0] # => { :name => 'Titanic 3D', 
+                                       :info => { :duration => 10814, :language => 'English', :genre => 'Action/Adventure/Drama' }
+                                       :times => ['13:30', '17:30', '21:30', '01:00']
+                                     }
+
+## TODO
+
+Improve API
+Fix and extend movie info parsing (genres and languages)
+Include more movie info from other data sources
 
 ## Contributing
 
