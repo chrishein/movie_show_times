@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["chrishein@gmail.com"]
   gem.description   = %q{Get Movie Show Times by Location}
   gem.summary       = %q{Google Movies crawler and parser}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/chrishein/movie_show_times"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
