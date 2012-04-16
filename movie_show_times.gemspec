@@ -4,8 +4,8 @@ require File.expand_path('../lib/movie_show_times/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Christian Hein"]
   gem.email         = ["chrishein@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Get Movie Show Times by Location}
+  gem.summary       = %q{Google Movies crawler and parser}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
   
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'fakeweb'
 end

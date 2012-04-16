@@ -1,12 +1,14 @@
 # encoding: UTF-8
 require 'spec_helper'
+require 'fakeweb'
 
 describe MovieShowTimes do
-  context 'when in results page' do
+  context 'parsing a results page' do
     
     before :all do
       @movieShowTimes = MovieShowTimes::Parser.new
-      @movieShowTimes.parse(File.read('spec/fixtures/movies_bsas.html'))
+      doc = Nokogiri::HTML(File.read('spec/fixtures/movies_bsas.html'))
+      @movieShowTimes.parse_show_times(doc)
     end
   
     it "provides a list of all theaters" do
@@ -42,7 +44,14 @@ describe MovieShowTimes do
     it "provides language of movies" do
       theater = @movieShowTimes.theaters['Monumental']
       movie = theater[:movies][0]
+      movie[:language].should_not be_nil
       movie[:language].should match('English')
+      
+      theater = @movieShowTimes.theaters['Atlas Patio Bullrich']
+      movie = theater[:movies][3]
+      movie[:language].should_not be_nil
+      movie[:language].should match('Italian')
+      
     end
     
     it "provides list of times for movies at a theater" do
@@ -78,8 +87,41 @@ describe MovieShowTimes do
     
     it "provides movie info with genre" do
       movie = @movieShowTimes.movies['Mirror Mirror']
+      movie[:info][:genre].should_not be_nil
       movie[:info][:genre].should match('Scifi/Fantasy')
+      
+      movie = @movieShowTimes.movies['American Reunion']
+      movie[:info][:genre].should_not be_nil
+      movie[:info][:genre].should match('Comedy/Romance')
     end
 
   end
+  
+  context 'when initialized without location' do
+    it "should raise an exception" do
+      lambda { MovieShowTimes::Crawler.new() }.should raise_error(MovieShowTimes::Crawler::MissingLocationArgument)
+    end
+  end
+  
+  context 'when initialized with location' do
+    before :all do
+      FakeWeb.allow_net_connect = false
+      (1..6).each do |i|
+        uri = "http://www.google.com/movies?hl=en&near=Buenos+Aires"
+        uri += "&start=#{10*(i - 1)}" if i > 1
+        FakeWeb.register_uri(:get, uri,
+            :response => File.open("spec/fixtures/movies_bsas_#{i}.txt", 'r').read
+        )
+      end
+      
+      @movieShowTimes = MovieShowTimes::Crawler.new({ :location => 'Buenos Aires' })
+    end
+    
+    it "should crawl all result pages" do
+      @movieShowTimes.theaters.should_not be_empty
+      @movieShowTimes.movies.should_not be_empty      
+      @movieShowTimes.theaters.length.should == 37
+    end
+  end
+  
 end

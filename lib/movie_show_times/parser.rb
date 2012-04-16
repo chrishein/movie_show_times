@@ -12,10 +12,10 @@ module MovieShowTimes
       @movies = Hash.new
     end
     
-    def parse(page_contents)
-      doc = Nokogiri::HTML(page_contents)
-      
-      theater_elements = doc.xpath("//div[@class='movie_results']/div[@class='theater']")
+    def parse_show_times(doc)
+      theater_elements = doc.xpath(
+      "//div[@class='movie_results']/div[@class='theater' and .//h2/a]"
+      )
       
       theater_elements.each do |t|
         theater_name = t.search(".//h2[@class='name']/a/text()").text
@@ -54,13 +54,13 @@ module MovieShowTimes
     end
     
     def parse_language(info_line)
-      matches = info_line.match(/.*(English|Spanish|Hebrew|French|German|Thai).*/)
+      matches = info_line.match(/(English|Spanish|Hebrew|French|German|Thai)/)
       return matches[0] unless matches.nil?
       nil
     end
     
     def parse_genre(info_line)
-      matches = info_line.match(/.*(Drama|Scifi\/Fantasy).*/)
+      matches = info_line.match(/(Drama|Scifi\/Fantasy|Documentary)/)
       return matches[0] unless matches.nil?
       nil
     end
