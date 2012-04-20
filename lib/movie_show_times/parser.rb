@@ -7,7 +7,9 @@ module MovieShowTimes
     
     attr_accessor :movies, :theaters
     
-    def initialize()
+    def initialize(language = 'en')
+      @language = language
+      @language_parser = MovieShowTimes::LanguageParser.new(language)
       @theaters = Hash.new
       @movies = Hash.new
     end
@@ -48,7 +50,7 @@ module MovieShowTimes
     def parse_movie_info(info_line)
       duration = ChronicDuration.parse(info_line)
       genre = parse_genre(info_line)
-      language = parse_language(info_line)
+      language = @language_parser.parse(info_line)
       
       { :duration => duration, :genre => genre, :language => language }
     end

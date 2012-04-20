@@ -42,7 +42,6 @@ describe MovieShowTimes do
     end
     
     it "provides language of movies" do
-      pending
       
       theater = @movieShowTimes.theaters['Monumental']
       movie = theater[:movies][0]

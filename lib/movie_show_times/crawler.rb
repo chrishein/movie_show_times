@@ -7,12 +7,14 @@ module MovieShowTimes
     
     const_set("MissingLocationArgument", Class.new(StandardError))
     
-    def initialize(options={})  
-      @parser = MovieShowTimes::Parser.new
+    def initialize(options = {})
       
       raise MissingLocationArgument unless options[:location]
       
       language = options[:language] || 'en'
+      
+      @parser = MovieShowTimes::Parser.new(language)
+      
       search_url = "http://www.google.com/movies?hl=#{language}&near=#{CGI.escape(options[:location])}"      
       
       @agent = Mechanize.new
