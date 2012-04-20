@@ -28,7 +28,10 @@ Or install it yourself as:
                       }
 
     puts theater[:movies][0] # => { :name => 'Titanic 3D', 
-                                       :info => { :duration => 10814, :language => 'English', :genre => 'Action/Adventure/Drama' }
+                                       :info => { 	:duration => 10814, 
+													:language => 'English', 
+													:genre => 'Action/Adventure/Drama'
+												}
                                        :times => ['13:30', '17:30', '21:30', '01:00']
                                      }
 
