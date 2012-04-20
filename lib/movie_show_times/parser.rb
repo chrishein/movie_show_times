@@ -55,12 +55,6 @@ module MovieShowTimes
       { :duration => duration, :genre => genre, :language => language }
     end
     
-    def parse_language(info_line)
-      matches = info_line.match(/(English|Spanish|Hebrew|French|German|Thai)/)
-      return matches[0] unless matches.nil?
-      nil
-    end
-    
     def parse_genre(info_line)
       matches = info_line.match(/(Drama|Scifi\/Fantasy|Documentary)/)
       return matches[0] unless matches.nil?
