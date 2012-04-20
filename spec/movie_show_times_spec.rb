@@ -42,6 +42,8 @@ describe MovieShowTimes do
     end
     
     it "provides language of movies" do
+      pending
+      
       theater = @movieShowTimes.theaters['Monumental']
       movie = theater[:movies][0]
       movie[:language].should_not be_nil
@@ -86,6 +88,8 @@ describe MovieShowTimes do
     end
     
     it "provides movie info with genre" do
+      pending
+      
       movie = @movieShowTimes.movies['Mirror Mirror']
       movie[:info][:genre].should_not be_nil
       movie[:info][:genre].should match('Scifi/Fantasy')
