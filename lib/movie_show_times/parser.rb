@@ -10,6 +10,7 @@ module MovieShowTimes
     def initialize(language = 'en')
       @language = language
       @language_parser = MovieShowTimes::LanguageParser.new(language)
+      @genre_parser = MovieShowTimes::GenreParser.new(language)
       @theaters = Hash.new
       @movies = Hash.new
     end
@@ -49,16 +50,11 @@ module MovieShowTimes
     
     def parse_movie_info(info_line)
       duration = ChronicDuration.parse(info_line)
-      genre = parse_genre(info_line)
+      genre = @genre_parser.parse(info_line)
       language = @language_parser.parse(info_line)
       
       { :duration => duration, :genre => genre, :language => language }
     end
-    
-    def parse_genre(info_line)
-      matches = info_line.match(/(Drama|Scifi\/Fantasy|Documentary)/)
-      return matches[0] unless matches.nil?
-      nil
-    end
+
   end
 end

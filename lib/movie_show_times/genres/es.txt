@@ -1,0 +1,26 @@
+acción
+aventura
+animación
+biografía
+comedia
+crimen
+documental
+drama
+familia
+fantasía
+Cine negro
+historia
+horror
+música
+musical
+misterio
+noticias
+reality
+romance
+ciencia ficción
+scifi
+deporte
+suspenso
+Talk-Show
+guerra
+western

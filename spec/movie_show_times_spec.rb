@@ -87,14 +87,10 @@ describe MovieShowTimes do
     end
     
     it "provides movie info with genre" do
-      pending
-      
       movie = @movieShowTimes.movies['Mirror Mirror']
-      movie[:info][:genre].should_not be_nil
       movie[:info][:genre].should match('Scifi/Fantasy')
       
       movie = @movieShowTimes.movies['American Reunion']
-      movie[:info][:genre].should_not be_nil
       movie[:info][:genre].should match('Comedy/Romance')
     end
 
