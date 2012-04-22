@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-A location is required to initialize the crawling. By default, it gets show times for the current date.
+* <tt>:location</tt> (string) name of city, town, location
+* <tt>:language</tt> (string) language code, like en, es, de, fr.
+* <tt>:days_ahead_</tt> (integer) number of days after today for which to get show times
+
+A location is required to initialize the crawling. By default, it gets show times for the current date in English.
 
     movieShowTimes = MovieShowTimes::Crawler.new({ :location => 'Buenos Aires' })
 
@@ -29,12 +33,12 @@ A location is required to initialize the crawling. By default, it gets show time
                         :movies => [ ... ]
                       }
 
-    puts theater[:movies][0] # => { :name => 'Titanic 3D', 
-                                       :info => { 	:duration => 10814, 
+    puts theater[:movies][0] # => {		:name => 'Titanic 3D', 
+                                       	:info => { 	:duration => 10814, 
 													:language => 'English', 
 													:genre => 'Action/Adventure/Drama'
 												}
-                                       :times => ['13:30', '17:30', '21:30', '01:00']
+                                       	:times => ['1:30pm', '5:30pm', '9:30pm', '1:00am']
                                      }
 
 
@@ -43,6 +47,22 @@ You can retrieve movie show times for following days. There is no definition for
     movieShowTimes = MovieShowTimes::Crawler.new({ 	:location => 'Buenos Aires',
 													:days_ahead => 2
  												})
+
+Getting show times info in Spanish:
+
+    movieShowTimes = MovieShowTimes::Crawler.new({ 
+													:location => 'Buenos Aires',
+													:language => 'es'
+												})
+												
+	puts theater[:movies][0] # => { :name => 'Titanic 3D', 
+                                    :info => {
+												:duration => 10814, 
+												:language => 'English', 
+												:genre => 'Acción/Aventura/Drama'
+											}
+                                       :times => ['13:30', '17:30', '21:30', '01:00']
+                                     }								
 
 ## TODO
 
