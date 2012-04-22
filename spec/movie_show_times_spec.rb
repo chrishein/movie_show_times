@@ -102,12 +102,25 @@ describe MovieShowTimes do
     end
   end
   
+  context 'when initialized with days ahead parameter' do
+    it "should raise an exception if value is not an integer" do
+      lambda { MovieShowTimes::Crawler.new( { :location => 'Buenos Aires', :days_ahead => 3.2 } ) 
+          }.should raise_error(MovieShowTimes::Crawler::WrongDaysAheadArgument)
+    end
+    
+    it "should raise an exception if value is not greater or equal to zero" do
+      lambda { MovieShowTimes::Crawler.new( { :location => 'Buenos Aires', :days_ahead => 7 } ) 
+          }.should raise_error(MovieShowTimes::Crawler::WrongDaysAheadArgument)
+    end
+  end
+  
   context 'when initialized with location' do
     before :all do
       FakeWeb.allow_net_connect = false
       (1..6).each do |i|
         uri = "http://www.google.com/movies?hl=en&near=Buenos+Aires"
         uri += "&start=#{10*(i - 1)}" if i > 1
+        uri += "&date=0" if i == 1
         FakeWeb.register_uri(:get, uri,
             :response => File.open("spec/fixtures/movies_bsas_#{i}.txt", 'r').read
         )

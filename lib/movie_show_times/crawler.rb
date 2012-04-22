@@ -6,6 +6,7 @@ module MovieShowTimes
   class Crawler
     
     const_set("MissingLocationArgument", Class.new(StandardError))
+    const_set("WrongDaysAheadArgument", Class.new(StandardError))
     
     def initialize(options = {})
       
@@ -13,9 +14,13 @@ module MovieShowTimes
       
       language = options[:language] || 'en'
       
+      days_ahead = options[:days_ahead] || 0
+      raise WrongDaysAheadArgument unless days_ahead.kind_of? Integer and 0 >= days_ahead
+      
       @parser = MovieShowTimes::Parser.new(language)
       
-      search_url = "http://www.google.com/movies?hl=#{language}&near=#{CGI.escape(options[:location])}"      
+      search_url = "http://www.google.com/movies?hl=#{language}" \
+                    "&near=#{CGI.escape(options[:location])}&date=#{days_ahead}"
       
       @agent = Mechanize.new
       page = @agent.get(search_url)

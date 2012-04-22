@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+A location is required to initialize the crawling. By default, it gets show times for the current date.
+
     movieShowTimes = MovieShowTimes::Crawler.new({ :location => 'Buenos Aires' })
 
     theater = movieShowTimes.theaters['Monumental']
@@ -35,11 +37,16 @@ Or install it yourself as:
                                        :times => ['13:30', '17:30', '21:30', '01:00']
                                      }
 
+
+You can retrieve movie show times for following days. There is no definition for how far in the future will this information be available, so use with caution as it may be the cause for retrieving no show times at all.
+
+    movieShowTimes = MovieShowTimes::Crawler.new({ 	:location => 'Buenos Aires',
+													:days_ahead => 2
+ 												})
+
 ## TODO
 
 Improve API
-
-Allow retrieving movie show times for following days
 
 Include more movie info from other data sources
 
