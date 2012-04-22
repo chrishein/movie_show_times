@@ -20,9 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-* <tt>:location</tt> (string) name of city, town, location
-* <tt>:language</tt> (string) language code, like en, es, de, fr.
-* <tt>:days_ahead_</tt> (integer) number of days after today for which to get show times
+* <tt>:location</tt> (required string) name of city, town, location
+* <tt>:language</tt> (optional string) language code, like en, es, de, fr.
+* <tt>:days\_ahead_</tt> (optional integer) number of days after today for which to get show times
 
 A location is required to initialize the crawling. By default, it gets show times for the current date in English.
 
