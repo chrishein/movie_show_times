@@ -39,8 +39,6 @@ Or install it yourself as:
 
 Improve API
 
-Fix and extend movie info parsing (genres and languages)
-
 Allow retrieving movie show times for following days
 
 Include more movie info from other data sources
