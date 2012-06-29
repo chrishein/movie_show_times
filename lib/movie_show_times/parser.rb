@@ -43,7 +43,7 @@ module MovieShowTimes
           showtimes << { :name => movie_name, :language => movie_info[:language], :times => times }
         end
         
-        @theaters[theater_name] = { :name => theater_name, :info => theater_info, :movies => showtimes }
+        @theaters << { :name => theater_name, :info => theater_info, :movies => showtimes }
       end
       
     end
