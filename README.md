@@ -53,7 +53,7 @@ Getting show times info in Spanish:
 
     movieShowTimes = MovieShowTimes::Crawler.new({ 
 													:city => 'Buenos Aires',
-                                                                                                        :state => 'Argentina',
+													:state => 'Argentina',
 													:language => 'es'
 												})
 												

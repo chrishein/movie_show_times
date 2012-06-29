@@ -24,6 +24,8 @@ module MovieShowTimes
         theater_name = t.search(".//h2[@class='name']/a/text()").text
         theater_info = t.search(".//div[@class='info']/text()").text
         showtimes = []
+        @movies = []
+        @theaters = []
         movie_elements = t.search(".//div[@class='showtimes']//div[@class='movie']")
         
         movie_elements.each do |m|
@@ -31,7 +33,7 @@ module MovieShowTimes
           movie_info_line = m.search(".//span[@class='info']/text()").text
           movie_info = parse_movie_info(movie_info_line)
           
-          @movies[movie_name] = { :name => movie_name, :info => movie_info } if @movies[movie_name].nil?
+          @movies << { :name => movie_name, :info => movie_info } if @movies[movie_name].nil?
           
           movie_times = m.search(".//div[@class='times']/span/text()")
           times = []
