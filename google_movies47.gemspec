@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "google_movies47"
   gem.require_paths = ["lib"]
-  gem.version       = Google_Movies47::VERSION
+  gem.version       = GoogleMovies47::VERSION
   
   gem.add_dependency 'mechanize'
   gem.add_dependency 'nokogiri'
