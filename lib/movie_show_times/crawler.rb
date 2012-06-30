@@ -2,7 +2,7 @@
 require 'mechanize'
 require 'cgi'
 
-module GoogleMovies47
+module MovieShowTimes
   class Crawler
     
     const_set("MissingLocationArgument", Class.new(StandardError))
@@ -17,7 +17,7 @@ module GoogleMovies47
       days_ahead = options[:days_ahead] || 0
       raise WrongDaysAheadArgument unless days_ahead.kind_of? Integer and 0 >= days_ahead
       
-      @parser = GoogleMovies47::Parser.new(language)
+      @parser = MovieShowTimes::Parser.new(language)
       
       search_url = "http://www.google.com/movies?hl=#{language}" \
                     "&near=#{CGI.escape(options[:city])}+#{CGI.escape(options[:state])}&date=#{days_ahead}"

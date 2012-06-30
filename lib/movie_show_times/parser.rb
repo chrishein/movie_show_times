@@ -2,15 +2,15 @@
 require 'nokogiri'
 require 'chronic_duration'
 
-module GoogleMovies47
+module MovieShowTimes
   class Parser
     
     attr_accessor :movies, :theaters
     
     def initialize(language = 'en')
       @language = language
-      @language_parser = GoogleMovies47::LanguageParser.new(language)
-      @genre_parser = GoogleMovies47::GenreParser.new(language)
+      @language_parser = MovieShowTimes::LanguageParser.new(language)
+      @genre_parser = MovieShowTimes::GenreParser.new(language)
       @theaters = Hash.new
       @movies = Hash.new
     end

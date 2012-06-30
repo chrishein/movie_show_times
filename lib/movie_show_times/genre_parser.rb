@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module GoogleMovies47
+module MovieShowTimes
   class GenreParser
     
     def initialize(language = 'en')

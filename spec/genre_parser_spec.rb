@@ -1,10 +1,10 @@
 # encoding: UTF-8
 require 'spec_helper'
 
-describe GoogleMovies47::GenreParser do
+describe MovieShowTimes::GenreParser do
   context 'when initialized with language that does not have genre names file' do
     it "it should return nil" do
-      @parser = GoogleMovies47::GenreParser.new('ur')
+      @parser = MovieShowTimes::GenreParser.new('ur')
       @parser.parse('1گھنٹ�? 40م�?�? - �?سپانوی').should be_nil
     end
   end
@@ -13,7 +13,7 @@ describe GoogleMovies47::GenreParser do
   context 'parsing an info string' do
     context 'in english' do
       before :all do
-        @parser = GoogleMovies47::GenreParser.new('en')
+        @parser = MovieShowTimes::GenreParser.new('en')
       end
 
       it "detects genre name" do
@@ -27,7 +27,7 @@ describe GoogleMovies47::GenreParser do
     
     context 'in spanish' do
       before :all do
-        @parser = GoogleMovies47::GenreParser.new('es')
+        @parser = MovieShowTimes::GenreParser.new('es')
       end
 
       it "detects genres names" do
