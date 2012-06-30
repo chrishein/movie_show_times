@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/movie_show_times/version', __FILE__)
+require File.expand_path('../lib/google_movies47/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Christian Hein","Jacob Williams"]
@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "google_movies47"
   gem.require_paths = ["lib"]
-  gem.version       = MovieShowTimes::VERSION
+  gem.version       = Google_Movies47::VERSION
   
   gem.add_dependency 'mechanize'
   gem.add_dependency 'nokogiri'

@@ -2,11 +2,11 @@
 require 'spec_helper'
 require 'fakeweb'
 
-describe MovieShowTimes do
+describe GoogleMovies47 do
   context 'parsing a results page' do
     
     before :all do
-      @movieShowTimes = MovieShowTimes::Parser.new
+      @movieShowTimes = GoogleMovies47::Parser.new
       doc = Nokogiri::HTML(File.read('spec/fixtures/movies_bsas.html'))
       @movieShowTimes.parse_show_times(doc)
     end
@@ -98,19 +98,19 @@ describe MovieShowTimes do
   
   context 'when initialized without location' do
     it "should raise an exception" do
-      lambda { MovieShowTimes::Crawler.new() }.should raise_error(MovieShowTimes::Crawler::MissingLocationArgument)
+      lambda { GoogleMovies47::Crawler.new() }.should raise_error(GoogleMovies47::Crawler::MissingLocationArgument)
     end
   end
   
   context 'when initialized with days ahead parameter' do
     it "should raise an exception if value is not an integer" do
-      lambda { MovieShowTimes::Crawler.new( { :location => 'Buenos Aires', :days_ahead => 3.2 } ) 
-          }.should raise_error(MovieShowTimes::Crawler::WrongDaysAheadArgument)
+      lambda { GoogleMovies47::Crawler.new( { :location => 'Buenos Aires', :days_ahead => 3.2 } ) 
+          }.should raise_error(GoogleMovies47::Crawler::WrongDaysAheadArgument)
     end
     
     it "should raise an exception if value is not greater or equal to zero" do
-      lambda { MovieShowTimes::Crawler.new( { :location => 'Buenos Aires', :days_ahead => 7 } ) 
-          }.should raise_error(MovieShowTimes::Crawler::WrongDaysAheadArgument)
+      lambda { GoogleMovies47::Crawler.new( { :location => 'Buenos Aires', :days_ahead => 7 } ) 
+          }.should raise_error(GoogleMovies47::Crawler::WrongDaysAheadArgument)
     end
   end
   
@@ -126,7 +126,7 @@ describe MovieShowTimes do
         )
       end
       
-      @movieShowTimes = MovieShowTimes::Crawler.new({ :location => 'Buenos Aires' })
+      @movieShowTimes = GoogleMovies47::Crawler.new({ :location => 'Buenos Aires' })
     end
     
     it "should crawl all result pages" do
