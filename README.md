@@ -1,5 +1,7 @@
 # MovieShowTimes
 
+[![Code Climate](https://codeclimate.com/github/chrishein/movie_show_times.png)](https://codeclimate.com/github/chrishein/movie_show_times)
+
 Get Movies Show Times for all theaters near a given location.
 
 The gem crawls and parses Google Movies pages.
