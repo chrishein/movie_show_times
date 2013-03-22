@@ -1,5 +1,6 @@
 # MovieShowTimes
 
+[![Gem Version](https://badge.fury.io/rb/movie_show_times.png)](http://badge.fury.io/rb/movie_show_times)
 [![Code Climate](https://codeclimate.com/github/chrishein/movie_show_times.png)](https://codeclimate.com/github/chrishein/movie_show_times)
 
 Get Movies Show Times for all theaters near a given location.
