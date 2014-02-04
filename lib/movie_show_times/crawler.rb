@@ -10,7 +10,7 @@ module MovieShowTimes
     
     def initialize(options = {})
       
-      raise MissingLocationArgument unless options[:location]
+      raise MissingLocationArgument unless options[:city] and options[:state]
       
       language = options[:language] || 'en'
       
@@ -20,7 +20,7 @@ module MovieShowTimes
       @parser = MovieShowTimes::Parser.new(language)
       
       search_url = "http://www.google.com/movies?hl=#{language}" \
-                    "&near=#{CGI.escape(options[:location])}&date=#{days_ahead}"
+                    "&near=#{CGI.escape(options[:city])}+#{CGI.escape(options[:state])}&date=#{days_ahead}"
       
       @agent = Mechanize.new
       page = @agent.get(search_url)

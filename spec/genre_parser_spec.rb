@@ -5,7 +5,7 @@ describe MovieShowTimes::GenreParser do
   context 'when initialized with language that does not have genre names file' do
     it "it should return nil" do
       @parser = MovieShowTimes::GenreParser.new('ur')
-      @parser.parse('1گھنٹہ 40م‏‏ - ہسپانوی').should be_nil
+      @parser.parse('1گھنٹ�? 40م�?�? - �?سپانوی').should be_nil
     end
   end
   

@@ -5,7 +5,7 @@ describe MovieShowTimes::LanguageParser do
   context 'when initialized with language that does not have language names file' do
     it "it should return nil" do
       @language_parser = MovieShowTimes::LanguageParser.new('ur')
-      @language_parser.parse('1گھنٹہ 40م‏‏ - ہسپانوی').should be_nil
+      @language_parser.parse('1گھنٹ�? 40م�?�? - �?سپانوی').should be_nil
     end
   end
   

@@ -23,13 +23,14 @@ Or install it yourself as:
 
 ## Usage
 
-* <tt>:location</tt> (required string) name of city, town, location
+* <tt>:city</tt> (required string) name of city, town, location
+* <tt>:state</tt> (required string) name of state or country (If inside USA, use country if outside USA)
 * <tt>:language</tt> (optional string) language code, like en, es, de, fr.
 * <tt>:days\_ahead</tt> (optional integer) number of days after today for which to get show times
 
 A location is required to initialize the crawling. By default, it gets show times for the current date in English.
 
-    movieShowTimes = MovieShowTimes::Crawler.new({ :location => 'Buenos Aires' })
+    movieShowTimes = MovieShowTimes::Crawler.new({ :city => 'Buenos Aires', :state => 'Argentina' })
 
     theater = movieShowTimes.theaters['Monumental']
     puts theater # => { :name => 'Monumental', :info => 'Lavalle 780, Buenos Aires, Argentina - 0-11-4393-9008',
@@ -47,14 +48,15 @@ A location is required to initialize the crawling. By default, it gets show time
 
 You can retrieve movie show times for following days. There is no definition for how far in the future will this information be available, so use with caution as it may be the cause for retrieving no show times at all.
 
-    movieShowTimes = MovieShowTimes::Crawler.new({ 	:location => 'Buenos Aires',
+    movieShowTimes = MovieShowTimes::Crawler.new({ 	:city => 'Buenos Aires', :state => 'Argentina',
 													:days_ahead => 2
  												})
 
 Getting show times info in Spanish:
 
     movieShowTimes = MovieShowTimes::Crawler.new({ 
-													:location => 'Buenos Aires',
+													:city => 'Buenos Aires',
+													:state => 'Argentina',
 													:language => 'es'
 												})
 												
